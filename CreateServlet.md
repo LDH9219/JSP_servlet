@@ -37,3 +37,17 @@ Web Application의 Deployment Descriptor(환경파일 : 배포서술자, DD파�
 <servlet-class> : 객체를 생성할 클래스 </servlet-class>
 </servlet>
 ```
+
+## web.xml 수정
+```HTML
+<servlet>
+	<servlet-name>na</servlet-name>
+	<servlet-class>Nana</servlet-class> //패키지 명이 존재할 경우 이름 앞에 같이 적는다. ex)newlecNana
+  </servlet>
+  
+  <servlet-mapping>
+	<servlet-name>na</servlet-name>
+	<url-pattern>/hello</url-pattern> //hello URL 이 오면 na servlet을 실행, 위의 Nana가 실행되게 된다. 매핑
+  </servlet-mapping>
+```
+
