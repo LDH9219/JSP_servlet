@@ -51,3 +51,30 @@ Web Application의 Deployment Descriptor(환경파일 : 배포서술자, DD파�
   </servlet-mapping>
 ```
 
+실행 결과
+localhost:8080/hello = 백지 페이지
+Hello Servlet = 톰캣 콘솔 출력
+
+## Servlet 문자열 출력하기 
+```java
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+
+public class Nana extends HttpServlet{
+  public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    System.out.println("Hello Servlet");
+    
+    /*
+    OutputStream os = response.getOutputStream();
+    PrintStream out = new PrintStream(os, true); //true 옵션은 버퍼가 전부 차는것을 기다리지 않고 전송.
+    
+    PrintWriter out = response.getWriter(); //다국어일 경우 PrintWriter가 기본.
+    */
+    
+    out.println("HELLO SERVLET?");
+  }
+}
+```
+
+
