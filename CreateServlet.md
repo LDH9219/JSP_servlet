@@ -1,7 +1,6 @@
 # 서블릿 코드 작성과 컴파일
 
-나나(임의의 이름) 서블릿 작성
-
+## 나나(임의의 이름) 서블릿 작성
 
 ```java
 import javax.servlet.*;
@@ -13,4 +12,28 @@ public class Nana extends HttpServlet{
     System.out.println("Hello Servlet");
   }
 }
+```
+
+## 컴파일(톰캣 10에서는 cmd 컴파일 오류 발생)
+1. jsp 폴더 이동
+2. javac -cp <참조 경로 설정> <컴파일할 자바파일>
+```cmd
+cd jsp
+javac -cp C:\Tools\apache-tomcat-9.0.68\lib\servlet-api.jar Nana.java
+```
+
+### 톰캣 webappas\ROOT\WEB-INF
+이 웹 인포메이션 디렉터리는 외부에서 접근이 불가능하다.
+
+### web.xml이란?
+Web Application의 Deployment Descriptor(환경파일 : 배포서술자, DD파일)로서 XML 형식의 파일
+모든 Web application은 반드시 하나의 web.xml 파일을 가져야 함
+위치 : WEB-INF 폴더 아래
+
+# 서블릿 설정
+```HTML
+<servlet> : 서블릿 객체 설정
+<servlet-name> : 객체의 이름 </servlet-name>
+<servlet-class> : 객체를 생성할 클래스 </servlet-class>
+</servlet>
 ```
