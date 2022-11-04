@@ -4,7 +4,7 @@
 사용자의 가장 기본이 되는 ```GET ```요청
 무엇을 달라고 하는 요청에는 옵션이 있을 수 있다.
 반복 횟수를 사용자로부터 입력 받으려면 입력 폼을 준비해야 한다.
-```HTML5
+```HTML
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,7 +72,7 @@ int cnt = 0; //int형 변수 cnt를 0으로 초기화
 if(temp != null && !temp.equals("")) // if(temp != null) 일 경우 null 값의 경우에만 해당하고 "" 공백처리가 불가능하기 때문에 &&연산으로 동시검사
   cnt = Integer.parseInt(temp); //temp로 받아온 값은 정수가 아닌 문자열이기 때문에 Integer.parseInt를 통해 정수로 변환.
 ```
-```HTML5
+```HTML
 <!DOCTYPE html>
 <html>
 <head>
