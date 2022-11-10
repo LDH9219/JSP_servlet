@@ -46,6 +46,11 @@ public class NoticeReg extends HttpServlet {
 		
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		/*
+		UTF-8의 경우 2byte를 1문자로 인식해서 출력하지만
+		웹서버에서의 인코딩은 1byte를 1문자로 인식하기 때문에 request.setCharacterEncoding();을 필수로 해줘야 한다.
+		*/
 		
 		  PrintWriter out = response.getWriter();
 		  
