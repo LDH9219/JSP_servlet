@@ -129,3 +129,65 @@ String _c = "c";
 → setMaxAge(int second) // 쿠키의 생명주기를 설정
 
 생명주기: Browser에 전달한 시간부터 만료시간까지
+
+```java
+@WebServlet("/calc2")
+public class Calc2 extends HttpServlet {
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Cookie[] cookies = request.getCookies(); //쿠키 배열을 클라이언트에게 받음
+
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+
+		PrintWriter out = response.getWriter();
+
+		String v_ = request.getParameter("v");
+		String op = request.getParameter("operator");
+		int v = 0;
+
+		if (!v_.equals(""))
+			v = Integer.parseInt(v_);
+		// 계산
+		if (op.equals("=")) {
+
+			int x = 0;
+			
+			String operator = "";
+			for (Cookie c : cookies) {
+				if (c.getName().equals("value")) {
+					x = Integer.parseInt(c.getValue());
+					break;
+				}
+			}
+			int y = v; // 지금 사용자가 전달한 값
+			
+			int result = 0;
+			for (Cookie c : cookies) {
+				if (c.getName().equals("op")) {
+					operator = c.getValue();
+					break;
+				}
+			}
+			if (operator.equals("+")) {
+				result = x + y;
+				out.printf("result is %d\\n", result);
+			} else {
+				result = x - y;
+				out.printf("result is %d\\n", result);
+			}
+		} // 값을 저장
+		else {
+				Cookie cookie = new Cookie("Cookie", ck); //쿠키의 이름="Cookie", 값=ck 로 설정
+				cookie.setMaxAge(24*60*60)//매개변수 → 시간 의미단위로 명확하게 표현
+				cookie.SetPath("/의미있는url"); // "/"->모든 url, 뒤에 의미 있는 url 붙여줌
+				response.addCookie(cookie); //쿠키를 클라이언트에게 전달해줌
+		}
+
+	}
+```
+<br>
+
+![image](https://user-images.githubusercontent.com/62749021/203267753-29ab20ed-a4f9-4418-be93-64270653143d.png)
+
