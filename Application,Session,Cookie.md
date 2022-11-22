@@ -3,6 +3,8 @@ servlet(Server Application Let)은 말 그대로 서버 앱 조각이라고 할 
 servlet은 사용이 끝난 뒤 was에 의해 사라지게 된다. <br>
 서블릿이 의미 있는 값을 유지해야 할 경우에는 application, Session, cookie 등의 상태 저장가능 객체를 사용한다.
 
+***
+
 # 1. Application
 Application은 서블릿 컨텍스트(Context)로, 서블릿들 간의 문맥을 저장할 수 있는 곳이자, 자원을 공유할 수 있는 저장소이다.<br>
 application은 사이트를 방문한 누구나 상태값을 서버(웹 어플리케이션)에 application 객체를 저장하여 사용하도록 한다.
@@ -187,7 +189,7 @@ public class Calc2 extends HttpServlet {
 
 	}
 ```
-<br>
+<br>***
 
 ![image](https://user-images.githubusercontent.com/62749021/203267753-29ab20ed-a4f9-4418-be93-64270653143d.png)
 
