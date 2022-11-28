@@ -81,7 +81,7 @@ JSP 내장 객체
 
 <br>
 
-내장 객체 request : HttpServletRequest
+### 내장 객체 request : HttpServletRequest
 <br>
 
 ![image](https://user-images.githubusercontent.com/62749021/204281525-0838f3ea-c9a7-4b93-828a-d0efac5454c2.png)
@@ -90,14 +90,14 @@ JSP 내장 객체
 
 <br>
 
-내장 객체 session : javax.servlet.http.HttpSession
+### 내장 객체 session : javax.servlet.http.HttpSession
 <br>
 
 ![image](https://user-images.githubusercontent.com/62749021/204282014-d2ffaffd-a85d-4585-bedf-2a8d59a37832.png)
 
 <br>
 
-내장 객체 application : javax.servlet.ServletContext
+### 내장 객체 application : javax.servlet.ServletContext
 <br>
 
 ![image](https://user-images.githubusercontent.com/62749021/204282128-2a451299-9e83-48de-8bd8-e4d788faf93c.png)
