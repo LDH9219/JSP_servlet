@@ -106,3 +106,91 @@ public class Spag extends HttpServlet {
 </body>
 </html>
 ```
+
+***
+
+# JSP MVC Model 1
+MVC 모델 1에서는 JAVA(Controller) | HTML(View) 코드를 분리해서 사용한다. 분리한 코드들의 가독성을 높임과 동시에 재사용 시 편의성이 개선된다.
+```java
+<%@page import="java.sql.Date"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8" %>
+
+<%
+int id = Integer.parseInt(request.getParameter("id"));
+
+String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+String sql = "SELECT * FROM NOTICE WHERE ID=?";
+String userid = "NEWLEC";
+String passwd = "8327";
+
+Class.forName("oracle.jdbc.driver.OracleDriver");
+Connection con = DriverManager.getConnection(url,userid,passwd);
+PreparedStatement st = con.prepareStatement(sql);
+st.setInt(1, id);
+
+ResultSet rs = st.executeQuery();
+rs.next();
+
+String title = rs.getString("TITLE");
+String writerId = rs.getString("WRITER_ID");
+Date regdate = rs.getDate("REGDATE");
+int hit = rs.getInt("HIT");
+String files = rs.getString("FILES");
+String content = rs.getString("CONTENT");
+
+rs.close();
+st.close();
+con.close();
+%>
+
+* * * * * * * *
+
+<div class="margin-top first">
+	<h3 class="hidden">공지사항 내용</h3>
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>제목</th>
+					<td class="text-align-left text-indent text-strong text-orange" colspan="3"><%= title %></td>
+				</tr>
+				<tr>
+					<th>작성일</th>
+					<td class="text-align-left text-indent" colspan="3"><%= regdate %>	</td>
+				</tr>
+				<tr>
+					<th>작성자</th>
+					<td><%=writerId %></td>
+					<th>조회수</th>
+					<td><%=hit %></td>
+				</tr>
+				<tr>
+					<th>첨부파일</th>
+					<td colspan="3"><%=files %></td>
+				</tr>
+				<tr class="content">
+					<td colspan="4"><%=content %><div><br></div><div>현재 진행중인 스프링 DI 8강까지의 예제입니다.</div><div><br></div><div><a href="http://www.newlecture.com/resource/spring2.zip"><b><u><font size="5" color="#dd8a00">예제 다운로드하기</font></u></b></a></div><div><br></div><div><br></div></td>
+				</tr>
+			</tbody>
+		</table>
+</div>
+```
+
+***
+
+# JSP MVC model 2
+View 와 Controller를 물리적으로 나누는 방식
+
+![image](https://user-images.githubusercontent.com/62749021/205253949-31baa2d3-fe8e-42a3-b27b-30ab9d1757b0.png)
+
+<br>
+
+```java request.setAttribute(String name, Object o)```를 통해서 
+
+```java
+```
