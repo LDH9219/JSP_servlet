@@ -202,7 +202,7 @@ request.getAttribute("title")
 Entity, 즉 불러와야 할 정보들로 이루어진 객체파일에 생성자 또는 게터와 세터를 사용하여 좀 더 구조화 된 형태로 사용한다.
 
 ```java
-//package com.newlecture.web.entity / Notice.java / Notice에서 사용될 객체들을 담은 
+//package com.newlecture.web.entity / Notice.java / Notice에서 사용될 객체들을 담은 파일
 package com.newlecture.web.entity;
 
 import java.sql.Date;
