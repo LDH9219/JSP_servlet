@@ -149,8 +149,6 @@ st.close();
 con.close();
 %>
 
-* * * * * * * *
-
 <div class="margin-top first">
 	<h3 class="hidden">공지사항 내용</h3>
 		<table class="table">
