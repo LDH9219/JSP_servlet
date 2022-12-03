@@ -24,9 +24,11 @@ ex) <c:forEach> , <c:url> , <c:set> etc
    varStatus = forEach문이 반복할 때 관리되는 상태 값을 사용할 수 있게 하는 속성
 </c:forEach>
 ```
+forEach문의 속성
 
 ![image](https://user-images.githubusercontent.com/62749021/205440412-f7546281-f79f-4b99-be1f-8d45952eda72.png)
 
+다음은 list.jsp 파일 내용 중 Pager 번호를 ```<c:set>```과 ```<c:forEach>```문을 사용하여 만드는 예시이다.
 ```java
 <c:set var="page" value="${(param.p==null)?1:param.p}" />
 	<c:set var="startNum" value="${page-(page-1)%5}" />
