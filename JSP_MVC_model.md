@@ -110,7 +110,10 @@ public class Spag extends HttpServlet {
 ***
 
 # JSP MVC Model 1
-MVC 모델 1에서는 JAVA(Controller) | HTML(View) 코드를 분리해서 사용한다. 분리한 코드들의 가독성을 높임과 동시에 재사용 시 편의성이 개선된다.
+MVC 모델 1에서는 JAVA(Controller) | HTML(View) 코드를 분리해서 사용한다. 분리한 코드들의 가독성을 높임과 동시에 재사용 시 편의성이 개선된다.    
+
+
+detail.jsp
 ```java
 <%@page import="java.sql.Date"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -199,7 +202,11 @@ request.getAttribute("title")
 ```
 위와 같은 방식으로도 가능하지만, View 단에 적어야 할 것들이 많아지므로 하지 않는다.     
 
-Entity, 즉 불러와야 할 정보들로 이루어진 객체파일에 생성자 또는 게터와 세터를 사용하여 좀 더 구조화 된 형태로 사용한다.
+Entity, 즉 불러와야 할 정보들로 이루어진 객체파일에 생성자 또는 게터와 세터 또는 생성자를 사용하여 좀 더 구조화 된 형태로 사용한다.
+
+Notice.java = Notice Entity 파일    
+NoticeDetailController = 외부 컨트롤러    
+detail.jsp = View    
 
 ```java
 //package com.newlecture.web.entity / Notice.java / Notice에서 사용될 객체들을 담은 파일
@@ -287,7 +294,7 @@ public class Notice {
 		this.content = content;
 	}
 
-	@Override
+	@Override // 출력 테스트용 toString()
 	public String toString() {
 		return "Notice [id=" + id + ", title=" + title + ", writerId=" + writerId + ", regdate=" + regdate + ", hit="
 				+ hit + ", files=" + files + ", content=" + content + "]";
@@ -377,7 +384,7 @@ public class NoticeDetailController extends HttpServlet {
 		
 		//forward
 		request
-		.getRequestDispatcher("/notice/detail.jsp")
+		.getRequestDispatcher("/WEB-INF/view/notice/detail.jsp")
 		.forward(request, response);
 	}
 }
@@ -413,3 +420,26 @@ public class NoticeDetailController extends HttpServlet {
 		</table>
 </div>
 ```
+
+위의 예제들은 NoticeDetail에 관한 예제이므로 반복출력을 요하는 Notice 에 대한 예제를 아래에 추가한다.
+
+```java
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+
+<%-- 					<%
+					List<Notice> list = (List<Notice>)request.getAttribute("list");
+					for(Notice n : list){ 
+ 						pageContext.setAttribute("n",n);
+						%> --%>
+					
+					<%-- var="n" 은 pageContext.setAttribute, items = "${list}를 통해 forEach 태그를 사용한다. --%>
+					<c:forEach var="n" items="${list}">	
+					<tr>
+						<td>${n.id }</td>
+						<td class="title indent text-align-left"><a href="detail?id=${n.id}">${n.title}</a></td>
+						<td>${n.writerId }</td>
+						<td>${n.regdate }</td>
+						<td>${n.hit }</td>
+					</tr> 
+					</c:forEach>
+<%-- 				<% } %> --%>
