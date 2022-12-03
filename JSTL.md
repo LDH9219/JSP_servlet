@@ -107,7 +107,11 @@ forEach문의 속성
 ```
 
 # JSTL:format
+참고 : https://jamesyleather.tistory.com/358    
+    
 날짜, 시간,  형식을 변경하는 태그이다.       
+
+## format 날짜 형식
 
 format JSTL 을 사용하기 위해서는 아래와 같은 코드블럭이 필요하다.
 ```java
@@ -129,4 +133,11 @@ list.jsp
 </c:forEach>
 ```
 
+## format 숫자형식
+```java
+<fmt:formatNumber value="${n.hit}"/>
+```
+조회수로 설정한 hit 가 3자리마다 ,로 끊어지는 format 형식이다. 추가적인 pattern이 있다. 위의 링크 참고.
 
+# JSTL:functions
+참고 : https://cofs.tistory.com/262
