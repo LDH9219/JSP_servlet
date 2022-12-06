@@ -4,10 +4,10 @@
 
 ![image](https://user-images.githubusercontent.com/62749021/205894664-0adfb368-a1af-46af-9c64-97c8629133d6.png)
 
-공지사항 페이지 요청 = ```getNoticeList()```
-다음, 이전 및 번호 페이지 요청 = ```getNoticeList(int page)```
-제목, 작성자 를 통해 검색 요청 = ```getNoticeList(String field, String query, int page)```
-총 공지사항의 페이지 세기 = ```getNoticeCount(), getNoticeCount(String field, String query)```
+공지사항 페이지 요청 = ```getNoticeList()``` <br> 
+다음, 이전 및 번호 페이지 요청 = ```getNoticeList(int page)``` <br> 
+제목, 작성자 를 통해 검색 요청 = ```getNoticeList(String field, String query, int page)``` <br>
+총 공지사항의 페이지 세기 = ```getNoticeCount(), getNoticeCount(String field, String query)``` <br>
 
 ## NoticeDetail
 
