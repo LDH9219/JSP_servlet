@@ -11,7 +11,7 @@
 
 ***
 
-##구현 목표
+## 구현 목표
 
 ![image](https://user-images.githubusercontent.com/62749021/205894664-0adfb368-a1af-46af-9c64-97c8629133d6.png)
 
