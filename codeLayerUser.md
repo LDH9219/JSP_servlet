@@ -1,13 +1,20 @@
 # 서비스 레이어 분리하기
-목차
-1. 구현 목표
-2. 오늘 구현
-3. 작동원리 및 순서
-4. 어려웠던 점
-5. 해결방법
+## 목차
+* Noticelist 
+>	1. 구현 목표
+>	2. 오늘 구현
+>	3. 작동원리 및 순서
+>	4. 어려웠던 점
+>	5. 해결방법
+* Noticedetail
+>	1. 구현 목표
+>	2. 오늘 구현
+>	3. 작동원리 및 순서
+>	4. 어려웠던 점
+>	5. 해결방법
 
 ***
-
+```
 ## NoticeDetail
 
 ![image](https://user-images.githubusercontent.com/62749021/205894951-96086172-12b0-480d-a3b6-97cbd0173efa.png)
@@ -17,23 +24,22 @@
 이전 글 요청 = ```getPrevNotice(id)```
 
 서비스 페이지 분리(NoticeService.java)
-
+```
 ***
 
+# * NoticeList(공지사항 목록 페이지)
 ## 구현 목표
-
 ![image](https://user-images.githubusercontent.com/62749021/205894664-0adfb368-a1af-46af-9c64-97c8629133d6.png)
 
-```
 DB에서 단순히 Notice를 읽어올 뿐만 아니라
 
-하단의 번호 바를 이용해 공지사항 페이지를 요청하거나 = getNoticeList()
-다음, 이전 번호 페이지를 요청하거나 = getNoticeList(int page)
-제목, 작성자를 통해 검색을 요청하거나 = getNoticeList(String field, String query, int page)
-공지사항의 총 개수를 통해 페이지를 카운팅 하는 기능
+>	하단의 번호 바를 이용해 공지사항 페이지를 요청하거나 = getNoticeList() <br>
+>	다음, 이전 번호 페이지를 요청하거나 = getNoticeList(int page) <br>
+>	제목, 작성자를 통해 검색을 요청하거나 = getNoticeList(String field, String query, int page) <br>
+>	공지사항의 총 개수를 통해 페이지를 카운팅 하는 기능 <br>
 
 상기에 기술한 기능들을 NoticeService.java에 추가한다.
-```
+
 
 ## 작동원리
 
@@ -53,19 +59,48 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.newlecture.web.entity.Notice; //notice 에 필요한 
+import com.newlecture.web.entity.Notice; 
+/*
+Notice(공지사항)에 필요한 변수들이 선언되어 있는 클래스이다.
+Notice 생성자에는
+
+>	번호 구분을 위한 int id
+>	공지사항 제목을 위한 String title
+>	작성자를 위한 String writerId
+>	등록일을 위한 Date regdate
+>	조회수를 위한 int hit
+>	첨부파일을 위한 String files
+>	공지사항 내용을 위한 String content
+>	??? 을 위한 boolean pub
+
+가 매개변수로 존재한다.
+*/
+
 import com.newlecture.web.entity.NoticeView;
+/*
+NoticeView는 Notice를 상속받은 클래스로
+>	댓글 개수(cmtCount) 변수가 선언되어있고
+>	NoticeView 생성자를 가진다. 매개변수는 Notice 생성자와 동일하다.
+>	>	NoticeView는 Notice 클래스에 있는 변수들을 사용하므로 super()를 사용하여 부모 클래스 멤버에 접근할 수 있도록 허용해주어야 한다.
+
+*/
 
 public class NoticeService {
 	public int removeNoticeAll(int[] ids){
 		
 		return 0;
 	}
-	
+/*
+미구현
+*/
+
 	public int pubNoticeAll(int[] ids){
 		
 		return 0;		
 	}
+/*
+미구현
+*/	
 	
 	public int insertNotice(Notice notice){
 		int result = 0;
