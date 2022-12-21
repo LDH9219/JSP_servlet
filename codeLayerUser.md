@@ -1,4 +1,13 @@
 # 서비스 레이어 분리하기
+목차
+1. 구현 목표
+2. 오늘 구현
+3. 작동원리 및 순서
+4. 어려웠던 점
+5. 해결방법
+
+***
+
 ## NoticeDetail
 
 ![image](https://user-images.githubusercontent.com/62749021/205894951-96086172-12b0-480d-a3b6-97cbd0173efa.png)
@@ -26,6 +35,7 @@ DB에서 단순히 Notice를 읽어올 뿐만 아니라
 상기에 기술한 기능들을 NoticeService.java에 추가한다.
 ```
 
+## 작동원리
 
 ### Service
 
